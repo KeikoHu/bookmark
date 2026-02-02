@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+/* ================= BODY ================= */
+
 body {
   font-family: sans-serif;
   background: #f0f9f4;
@@ -109,7 +111,7 @@ body.dark #bookmark-list li {
   border-radius: 6px;
 }
 
-/* ================= CHAT BASE ================= */
+/* ================= CHAT ================= */
 
 .chat {
   width: 300px;
@@ -150,7 +152,7 @@ body.dark .chat {
   color: white;
 }
 
-/* ================= MOBILE FIX (NO OVERLAP) ================= */
+/* ================= MOBILE FIX (CENTERED + NO OVERLAP) ================= */
 
 @media (max-width: 600px) {
   body {
@@ -160,7 +162,7 @@ body.dark .chat {
   }
 
   .chat {
-    position: static;   /* cancels fixed */
+    position: static;      /* cancels fixed */
     width: 100%;
     max-width: 100%;
     margin-bottom: 15px;
@@ -172,6 +174,6 @@ body.dark .chat {
   }
 
   .app-container {
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto; /* centers app */
   }
 }
