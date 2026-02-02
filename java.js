@@ -86,3 +86,56 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
     }
 });
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* ================= FIREBASE SETUP ================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyBvwmM7LQvdgSmXhEqNAWpc2mGo6SUE78",
+  authDomain: "bookmark-chat-0708.firebaseapp.com",
+  projectId: "bookmark-chat-0708",
+  storageBucket: "bookmark-chat-0708.appspot.com",
+  messagingSenderId: "718007409992",
+  appId: "1:718007409992:web:6d1c4f32367bee0c2ee77d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+console.log("🔥 Firebase connected");
+
+/* ================= CHAT ================= */
+const messagesDiv = document.getElementById("messages");
+const input = document.getElementById("msgInput");
+const usernameInput = document.getElementById("username");
+const sendBtn = document.getElementById("sendBtn");
+
+sendBtn.addEventListener("click", async () => {
+  const text = input.value.trim();
+  const user = usernameInput.value.trim() || "Anonymous";
+  if (!text) return;
+
+  await addDoc(collection(db, "messages"), {
+    user,
+    text,
+    time: Date.now()
+  });
+
+  input.value = "";
+});
+
+onSnapshot(collection(db, "messages"), (snapshot) => {
+  messagesDiv.innerHTML = "";
+  snapshot.docs
+    .sort((a, b) => a.data().time - b.data().time)
+    .forEach(doc => {
+      const p = document.createElement("p");
+      p.textContent = `${doc.data().user}: ${doc.data().text}`;
+      messagesDiv.appendChild(p);
+    });
+});

@@ -104,3 +104,24 @@ body.dark #bookmark-list li {
     border: none;
     border-radius: 6px;
 }
+
+.chat {
+  width: 300px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#messages {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: black;
+}
+
+.chat input, .chat button {
+  width: 100%;
+  margin-bottom: 6px;
+}

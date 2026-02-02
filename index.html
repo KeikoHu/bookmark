@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="chat">
+  <h2>Chat</h2>
+  <div id="messages"></div>
+
+  <input id="username" placeholder="Your name" />
+  <input id="msgInput" placeholder="Type a message..." />
+  <button id="sendBtn">Send</button>
+</div>
+
     <button id="themeToggle" class="theme-btn">🌙</button>
     <div class="app-container">
         <h1>Bookmark Saver</h1>
@@ -18,6 +27,8 @@
 
         <ul id="bookmark-list"></ul>
     </div>
+    <script type="module" src="java.js"></script>
+
     <script src="java.js"></script>
 </body>
 </html>
