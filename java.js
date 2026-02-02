@@ -139,3 +139,9 @@ onSnapshot(collection(db, "messages"), (snapshot) => {
       messagesDiv.appendChild(p);
     });
 });
+const toggle = document.querySelector(".chat-toggle");
+const chat = document.querySelector(".chat");
+
+toggle.addEventListener("click", () => {
+  chat.classList.toggle("open");
+});
