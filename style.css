@@ -118,10 +118,45 @@ body.dark #bookmark-list li {
   border: 1px solid #ddd;
   margin-bottom: 10px;
   padding: 5px;
-  color: black;
+  color: #2ecc71;
 }
 
 .chat input, .chat button {
   width: 100%;
   margin-bottom: 6px;
+}
+/* ==== CHAT POSITION FIX (OVERRIDES ONLY) ==== */
+
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  max-width: 90vw;
+  z-index: 1000;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode */
+body.dark .chat {
+  background: #1e1e1e;
+  color: white;
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  .chat {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 10px;
+    width: 95%;
+  }
+
+  #messages {
+    height: 150px;
+  }
+}
+body {
+  padding-bottom: 220px;
 }
