@@ -1,109 +1,115 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
-    background: #f0f9f4;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    transition: background 0.3s, color 0.3s;
+  font-family: sans-serif;
+  background: #f0f9f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background 0.3s, color 0.3s;
 }
 
 body.dark {
-    background: #121212;
-    color: white;
+  background: #121212;
+  color: white;
 }
 
+/* ================= APP ================= */
+
 .app-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    transition: background 0.3s;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  transition: background 0.3s;
 }
 
 body.dark .app-container {
-    background-color: #1e1e1e;
+  background-color: #1e1e1e;
 }
 
 h1 {
-    color: #2ecc71;
-    margin-bottom: 20px;
+  color: #2ecc71;
+  margin-bottom: 20px;
 }
 
 .input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 input {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
 button {
-    padding: 10px;
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 10px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #27ae60;
+  background-color: #27ae60;
 }
 
 #bookmark-list {
-    list-style: none;
+  list-style: none;
 }
 
 #bookmark-list li {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 body.dark #bookmark-list li {
-    background-color: #2a2a2a;
+  background-color: #2a2a2a;
 }
 
 #bookmark-list a {
-    color: #2ecc71;
-    text-decoration: none;
+  color: #2ecc71;
+  text-decoration: none;
 }
 
 #bookmark-list button {
-    background-color: #e74c3c;
+  background-color: #e74c3c;
 }
 
+/* ================= THEME BUTTON ================= */
+
 .theme-btn {
-    position: absolute;
-    cursor: pointer;
-    top: 20px;
-    right: 20px;
-    font-size: 1.2rem;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
+  position: absolute;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
 }
+
+/* ================= CHAT BASE ================= */
 
 .chat {
   width: 300px;
@@ -121,11 +127,13 @@ body.dark #bookmark-list li {
   color: #2ecc71;
 }
 
-.chat input, .chat button {
+.chat input,
+.chat button {
   width: 100%;
   margin-bottom: 6px;
 }
-/* ==== CHAT POSITION FIX (OVERRIDES ONLY) ==== */
+
+/* ================= DESKTOP CHAT POSITION ================= */
 
 .chat {
   position: fixed;
@@ -137,26 +145,33 @@ body.dark #bookmark-list li {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Dark mode */
 body.dark .chat {
   background: #1e1e1e;
   color: white;
 }
 
-/* Mobile phones */
+/* ================= MOBILE FIX (NO OVERLAP) ================= */
+
 @media (max-width: 600px) {
+  body {
+    height: auto;
+    display: block;
+    padding-bottom: 220px;
+  }
+
   .chat {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    bottom: 10px;
-    width: 95%;
+    position: static;   /* cancels fixed */
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+    box-shadow: none;
   }
 
   #messages {
     height: 150px;
   }
-}
-body {
-  padding-bottom: 220px;
+
+  .app-container {
+    margin-bottom: 20px;
+  }
 }
